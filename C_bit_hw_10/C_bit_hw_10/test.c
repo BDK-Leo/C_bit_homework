@@ -1,9 +1,9 @@
-#define _CRT_SECURE_NO_WARNINGS 1
-//ָ�루����
+﻿#define _CRT_SECURE_NO_WARNINGS 1
+//指针（二）
 
 
-//��Ŀһ��ʹ��ָ���ӡ��������
-//дһ��������ӡarr��������ݣ���ʹ�������±꣬ʹ��ָ�롣arr��һ������һά���顣
+//题目一：使用指针打印数组内容
+//写一个函数打印arr数组的内容，不使用数组下标，使用指针。arr是一个整形一维数组。
 //#include<stdio.h>
 //int main()
 //{
@@ -19,8 +19,8 @@
 //}
 
 
-//��Ŀ����ð������
-//ʵ��һ�������������ð������
+//题目二：冒泡排序
+//实现一个对整形数组的冒泡排序
 //#include<stdio.h>
 //int main()
 //{
@@ -50,5 +50,74 @@
 //	{
 //		printf("%d ",arr[i]);
 //	}
+//	return 0;
+//}
+
+
+//题目三：字符串旋转结果
+//写一个函数，判断一个字符串是否为另外一个字符串旋转之后的字符串。
+//例如：给定s1 = AABCD和s2 = BCDAA，返回1
+//给定s1 = abcd和s2 = ACBD，返回0.
+//AABCD左旋一个字符得到ABCDA
+//AABCD左旋两个字符得到BCDAA
+//AABCD右旋一个字符得到DAABC
+// 方法一：
+//#include<stdio.h>
+//#include<string.h>
+//
+//char* Func(char* src, char* find)
+//{
+//	char tmp[256] = { 0 };
+//	strcpy(tmp, src); // AABCD
+//	strcat(tmp, src); // AABCDAABCD
+//	return strstr(tmp, find);
+//}
+//int main()
+//{
+//	char* s1 = "AABCD";
+//	char* s2 = "BCDAA";
+//	char* ret = Func(s1,s2);
+//	if (ret != NULL)
+//	{
+//		printf("1\n");
+//	}
+//	else
+//	{
+//		printf("0\n");
+//	}
+//	return 0;
+//}
+
+// 方法二：
+//#include<stdio.h>
+//#include<string.h>
+//
+//int FindRound(char* str,char* find)
+//{
+//	size_t len = strlen(str);
+//	int i = 0;
+//	int j = 0;
+//	for (i = 0;i < len;i++)
+//	{
+//		char tmp = str[0];
+//		for (j= 0;j < len - 1;j++)
+//		{
+//			str[j] = str[j + 1];
+//		}
+//		str[j] = tmp;
+//		if (strcmp(str,find) == 0)
+//		{
+//			return 1;
+//		}
+//	}
+//	return 0;
+//}
+//
+//int main()
+//{
+//	char s1[] = "AABCD";
+//	char s2[] = "BCDAA";
+//	int ret = FindRound(s1, s2);
+//	printf("%d\n",ret);
 //	return 0;
 //}
