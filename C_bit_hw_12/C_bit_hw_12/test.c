@@ -3,9 +3,9 @@
 
 //题一：qsort使用练习
 //练习使用库函数，qsort排序各种类型的数据
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
+//#include<stdio.h>
+//#include<stdlib.h>
+//#include<string.h>
 
 //int cmp_int(const void* p1,const void* p2 )
 //{
@@ -17,18 +17,18 @@
 //	return *(double*)p1 > *(double*)p2 ? 1 : -1;
 //}
 
-int cmp_char(const void* p1, const void* p2)
-{
-	return strcmp(*(char**)p1, *(char**)p2);
-}
+//int cmp_char(const void* p1, const void* p2)
+//{
+//	return strcmp(*(char**)p1, *(char**)p2);
+//}
 
-void Print_arr(char* arr[], size_t sz)
-{
-	for (int i = 0;i < sz;i++)
-	{
-		printf("%s ",arr[i]);
-	}
-}
+//void Print_arr(char* arr[], size_t sz)
+//{
+//	for (int i = 0;i < sz;i++)
+//	{
+//		printf("%s ",arr[i]);
+//	}
+//}
 
 //void test01()
 //{
@@ -46,21 +46,21 @@ void Print_arr(char* arr[], size_t sz)
 //	Print_arr(arr, sz);
 //}
 
-void test03()
-{
-	char* arr[4] = {"ccc","ddd","aaa","eee"};
-	size_t sz = sizeof(arr) / sizeof(arr[0]);
-	qsort(arr, sz, sizeof(arr[0]), cmp_char);
-	Print_arr(arr, sz);
-}
+//void test03()
+//{
+//	char* arr[4] = {"ccc","ddd","aaa","eee"};
+//	size_t sz = sizeof(arr) / sizeof(arr[0]);
+//	qsort(arr, sz, sizeof(arr[0]), cmp_char);
+//	Print_arr(arr, sz);
+//}
 
-int main()
-{
-	//test01();//整型
-	//test02();//浮点型
-	test03();//字符型
-	return 0;
-}
+//int main()
+//{
+//	//test01();//整型
+//	//test02();//浮点型
+//	test03();//字符型
+//	return 0;
+//}
 
 ////结构体类型
 //typedef struct Stu
@@ -112,7 +112,7 @@ int main()
 //};
 //
 ////arr打印函数
-//void arr_print(int arr[], int sz)
+//void arr_print(int* arr, int sz)
 //{
 //    int i = 0;
 //    for (i = 0; i < sz; i++)
@@ -230,4 +230,39 @@ int main()
 //    //system("pause");
 //    return 0;
 //}
+
+
+//题三：转移表代码实践
+//使用函数指针数组实现转移表
+#include<stdio.h>
+int Add(int x,int y)
+{
+	return x + y;
+}
+
+int Sub(int x, int y)
+{
+	return x - y;
+}
+
+int Mul(int x, int y)
+{
+	return x * y;
+}
+
+int Div(int x, int y)
+{
+	return x / y;
+}
+
+int main()
+{
+	//int (*p1)(int, int) = &Add;
+	int(*pArr[4])(int, int) = {Add,Sub,Mul,Div};
+	for (int i = 0;i < 4;i++)
+	{
+		printf("%d\n",pArr[i](9, 3));
+	}
+	return 0;
+}
 
